@@ -1,1 +1,115 @@
+/**
+ *
+ * @namespace faker.collage
+ */
+var Collage = function (faker) {
+  var self = this;
+  var fake = faker.fake;
+
+  /**
+   * collage
+   *
+   * @method faker.collage.collage
+   */
+  self.collage = function () {
+    return fake('{{collage.specification}} {{collage.model}}');
+  };
+
+  self.collage.schema = {
+    "description": "Generates a random collage.",
+    "sampleResults": ["ou", "jntu", "ku"]
+  };
+
+  /**
+   * specification
+   *
+   * @method faker.collage.specification
+   */
+  self.manufacturer = function () {
+    return faker.random.arrayElement(faker.definitions.collage.specification);
+  };
+
+  self.specification.schema = {
+    "description": "Generates a specification name.",
+    "sampleResults": ["gntuh", "jntuk", "jntua"]
+  };
+
+
+  /**
+   * model
+   *
+   * @method faker.collage.model
+   */
+  self.model = function () {
+    return faker.random.arrayElement(faker.definitions.collage.model);
+  };
+
+  self.model.schema = {
+    "description": "Generates a collage model.",
+    "sampleResults": ["Explorer", "Camry", "Ranchero"]
+  };
+
+  /**
+   * type
+   *
+   * @method faker.collage.type
+   */
+  self.type = function () {
+    return faker.random.arrayElement(faker.definitions.collage.type);
+  };
+
+  self.type.schema = {
+    "description": "Generates a collage type.",
+    "sampleResults": ["Coupe", "Convertable", "Sedan", "SUV"]
+  };
+
+  /**
+   * area
+   *
+   * @method faker.collage.area
+   */
+  self.area = function () {
+    return faker.random.arrayElement(faker.definitions.collage.area);
+  };
+
+  self.area.schema = {
+    "description": "Generates a area type.",
+    "sampleResults": ["india", "delhi", "hyderabad"]
+  };
+
+  /**
+   * vin
+   *
+   * @method faker.collage.vin
+   */
+  self.vin = function () {
+    return (
+      faker.random.alphaNumeric(10) +
+      faker.random.alpha({ count: 1, upcase: true }) +
+      faker.random.alphaNumeric(1) +
+      faker.random.number({ min: 10000, max: 100000}) // return five digit #
+    ).toUpperCase();
+  };
+
+  self.vin.schema = {
+    "description": "Generates a valid VIN number.",
+    "sampleResults": ["YV1MH682762184654", "3C7WRMBJ2EG208836"]
+  };
+
+  /**
+   * branch
+   *
+   * @method faker.collage.branch
+   */
+  self.branch = function () {
+    return fake('{{commerce.branch}}');
+  };
+
+  self.branch.schema = {
+    "description": "Generates a branch",
+    "sampleResults": ["ece", "eee", "cse"]
+  };
+};
+
+module["exports"] = Collage;
 
